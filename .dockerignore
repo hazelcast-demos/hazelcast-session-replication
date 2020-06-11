@@ -1,0 +1,6 @@
+**
+!src/**
+!pom.xml
+!tsconfig.json
+!types.d.ts
+!tomcat

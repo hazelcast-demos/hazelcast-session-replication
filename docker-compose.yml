@@ -1,0 +1,33 @@
+version: '3'
+services:
+  load-balancer:
+    image: haproxy:2.1-alpine
+    ports:
+    - 80:80
+    volumes:
+    - ./haproxy:/usr/local/etc/haproxy:ro
+    depends_on:
+      - node1
+      - node2
+      - management_center
+  node1:
+    image: hazelcast/vaadin-session:latest
+    hostname: tomcat.one.1
+    environment:
+      - SERVER_PORT=8081
+  node2:
+    image: hazelcast/vaadin-session:latest
+    hostname: tomcat.two.2
+    environment:
+      - SERVER_PORT=8082
+  management_center:
+    image: hazelcast/management-center:4.0.3
+    environment:
+      MC_INIT_CMD: >-
+        ./mc-conf.sh user create --lenient -H=/data -n=admin -p=aikidoka74 -r=admin -v;
+        ./mc-conf.sh cluster add --lenient -H=/data -cn=dev -ma=node1,node2 -v
+    ports:
+      - 8080:8080
+    depends_on:
+      - node1
+      - node2

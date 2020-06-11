@@ -1,0 +1,14 @@
+HTTP/1.0 504 Gateway Time-out
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+
+<html>
+<head>
+<meta http-equiv="refresh" content="1;URL=/">
+<title>Oops, please wait</title>
+</head>
+<body>
+<h1>Oops, please wait...</h1>
+</body>
+</html>
