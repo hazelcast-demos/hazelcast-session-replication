@@ -1,7 +1,7 @@
 package com.hazelcast;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
@@ -24,7 +24,7 @@ public class MainView extends VerticalLayout {
     }
 
     private Component hostLabel() {
-        Label label = new Label();
+        Text label = new Text("");
         try {
             String hostName = InetAddress.getLocalHost().getHostName();
             label.setText(hostName);
